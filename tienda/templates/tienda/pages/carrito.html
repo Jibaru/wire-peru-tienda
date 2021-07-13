@@ -1,0 +1,119 @@
+{% extends 'tienda/pages/base.html' %}
+{% load static %}
+
+{% block titulo %}
+Carrito
+{% endblock %}
+
+{% block contenido %}
+<section class="container">
+    <div class="row">
+        <section class="col-12 d-none d-md-block">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="/" class="trsn" title="Inicio">Inicio</a>
+                </li>
+                <li class="breadcrumb-item">
+                    <span>Carrito</span>
+                </li>
+            </ol>
+        </section>
+    </div>
+</section>
+
+<div class="container">
+    <!-- Page Heading -->
+    <div class="row">
+        <div class="col-12">
+            <h1 class="page-header">Carrito de compras</h1>
+        </div>
+    </div>
+    <!-- /.row -->
+
+    {% if False %}
+    <div class="row">
+        <section class="col-12">
+            <div class="bg-info alert text-white">
+                El carrito está vacío. Retroceda para poder añadir productos.
+            </div>
+            <a href="/" class="btn btn-link" title="&larr; Go back & Keep Shopping">
+                &larr; Regresar y seleccionar productos a comprar.
+            </a>
+        </section>
+    </div>
+
+    {% else %}
+    <!-- Cart Table -->
+    <div class="row">
+        <div class="col-lg-8 mb-4">
+            <form id="cart-update-form" method="post" action="https://bootstrap.jumpseller.com/cart/update">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Artículo</th>
+                                <th class="mob-hide"></th>
+                                <th class="mob-hide">Precio unitario</th>
+                                <th class="table-qty">Cantidad</th>
+                                <th>Subtotal</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <h3>Artículo X</h3>
+                                </td>
+                                <td class="text-center mob-hide">
+                                    <a href="/articulos/12" class="trsn" title="Articulo X">
+                                        <img src="https://cdnx.jumpseller.com/bootstrap/image/14896546/resize/120/150?1614272621"
+                                            alt="Wacom Bamboo Tablet" title="Articulo X">
+                                    </a>
+                                </td>
+                                <td class="mob-hide">
+                                    <span class="order-product-price">S/. 100.0</span>
+                                </td>
+                                <td>
+                                    <span>1</span>
+                                </td>
+                                <td>
+                                    <span class="order-product-subtotal">S/. 100.0</span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </form>
+        </div>
+
+        <!-- Cart Options -->
+        <div class="col-lg-4 mb-4">
+            <div class="row">
+                <div class="col-12 cart-totals">
+                    <table class="table table-striped">
+                        <tbody>
+                            <tr class="totals">
+                                <td colspan="1" class="text-left">Envío</td>
+                                <td colspan="1" class="text-right">S/. 0</td>
+                            </tr>
+                            <tr class="totals key">
+                                <td colspan="1" class="text-left"><strong>Total</strong></td>
+                                <td colspan="1" class="text-right"><strong>S/. 100.0</strong></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="text-center cart-actions">
+                        <a href="/verificar-pedido" class="btn btn-primary btn-block" title="Verificar Pedido">
+                            Verificar compra
+                        </a>
+                        <a href="/" class="btn btn-link btn-block" title="← Continuar comprando">
+                            ← Continuar comprando
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+</div>
+{% endblock %}

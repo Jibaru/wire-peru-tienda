@@ -1,0 +1,117 @@
+{% extends 'tienda/pages/base.html' %}
+{% load static %}
+
+{% block titulo %}
+Artículo
+{% endblock %}
+
+{% block contenido %}
+<section class="container">
+    <div class="row">
+        <section class="col-12 d-none d-md-block">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="/" class="trsn" title="Inicio">Inicio</a>
+                </li>
+                <li class="breadcrumb-item">
+                    <a href="/articulos" class="trsn" title="Artículos">Artículos</a>
+                </li>
+                <li class="breadcrumb-item">
+                    <span>Artículo X</span>
+                </li>
+            </ol>
+        </section>
+    </div>
+</section>
+
+<div class="container">
+    <!-- Page Heading -->
+    <div class="row">
+        <div class="col-12">
+            <h1 class="page-header">Artículo X</h1>
+        </div>
+    </div>
+    <!-- /.row -->
+
+    <div class="row">
+        <div class="col-lg-6 mb-4">
+            <div class="">
+                <div class="main-product-image space">
+                    <div id="product-carousel" class="carousel slide">
+                        <div class="carousel-inner" role="listbox">
+                            <div class="carousel-item active">
+                                <img id="first-image"
+                                    src="https://images.jumpseller.com/store/bootstrap/224300/grey-bamboo.jpg?1614272621"
+                                    alt="Artículo X" class="img-fluid">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-6">
+            <form class="form-horizontal" action="https://bootstrap.jumpseller.com/cart/add/224300" method="post"
+                enctype="multipart/form-data" name="buy">
+
+                <!-- Product Price  -->
+                <div class="form-group price_elem row">
+                    <label class="col-sm-3 col-md-3 form-control-label nopaddingtop">Precio:</label>
+                    <div class="col-sm-8 col-md-9">
+                        <span class="product-form-price" id="product-form-price">S/. 100.0</span>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="Quantity" class="col-sm-3 col-md-3 form-control-label">Cantidad:</label>
+                    <div class="col-sm-8 col-md-9">
+                        <input type="number" class="qty form-control" id="input-qty" name="qty" maxlength="5" value="1">
+                    </div>
+                </div>
+
+                <div class="form-group product-stock product-available row visible">
+                    <label class="col-sm-3 col-md-3 form-control-label"></label>
+                    <div class="col-sm-8 col-sm-offset-3 col-md-9 col-md-offset-3">
+                        <input type="submit" class="adc btn btn-primary" value="Agregar al carrito">
+                        <a href="javascript:history.back()" class="btn btn-link btn-sm" title="Continuar comprando">←
+                            Continuar comprando</a>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-sm-3 col-md-3 form-control-label">Descripción:</label>
+                    <div class="col-sm-8 col-md-9 description">
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi consequuntur saepe, voluptatem
+                            dolorum sed natus non ipsam culpa nesciunt doloremque, reiciendis aliquam. Corrupti ducimus
+                            amet ipsam eius aliquam aliquid asperiores?</p>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-sm-3 col-md-3 form-control-label">Detalles:</label>
+                    <div class="col-sm-9 col-md-9">
+                        <p>Marca: Wacom</p>
+                    </div>
+                </div>
+
+                <div id="product-sharing" class="row">
+                    <label class="col-sm-3 col-md-3 ">Compartir:</label>
+                    <ul class="list-inline social-networks col-sm-9 col-md-9">
+                        <li class="list-inline-item">
+                            <a href="https://www.facebook.com/sharer/sharer.php?u=#url" target="_blank">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                        </li>
+
+                        <li class="list-inline-item">
+                            <a href="whatsapp://send?text=Increible!" target="_blank">
+                                <i class="fab fa-whatsapp"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

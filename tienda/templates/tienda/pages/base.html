@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Head -->
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>{% block titulo %}{% endblock %}</title>
+
+  {% load static %}
+  <!-- Bootstrap -->
+  <link rel="stylesheet" type="text/css" href="{% static 'tienda/vendor/bootstrap/css/bootstrap.min.css' %}" />
+  <link rel="stylesheet" type="text/css" href="{% static 'tienda/vendor/fontawesome-free/css/all.min.css' %}" />
+  <link rel="stylesheet" type="text/css" href="{% static 'tienda/css/fuentes.css' %}" />
+  <link rel="stylesheet" type="text/css" href="{% static 'tienda/css/app.css' %}" />
+  <link rel="stylesheet" type="text/css" href="{% static 'tienda/css/color_pickers.css' %}" />
+</head>
+
+<body>
+  <!-- Navegacion -->
+  {% include 'tienda/layout/navegacion.html' %}
+  {# Contenido #}
+  {% block contenido %}{% endblock %}
+
+  <!-- Footer -->
+  <hr />
+  <div class="container">
+    <footer>
+      <div class="row">
+        <div class="col-12">
+          <p class="powered-by text-center">
+            © 2021 Wire Perú SAC. Todos los derechos reservados. Maquetado con
+            <a href="https://getbootstrap.com/docs/4.1" title="Bootstrap" target="_blank"
+              rel="nofollow noopener">Bootstrap</a>.
+          </p>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Jquery -->
+  <script src="{% static 'tienda/vendor/jquery/jquery-3.6.0.min.js' %}"></script>
+  <!-- Popper -->
+  <script src="{% static 'tienda/vendor/popper/popper.min.js' %}"></script>
+  <!-- Bootstrap -->
+  <script src="{% static 'tienda/vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+</body>
+
+</html>

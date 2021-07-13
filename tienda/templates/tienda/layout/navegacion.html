@@ -1,0 +1,122 @@
+{% load static %}
+<div class="fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a href="/" title="Wire Perú" class="navbar-brand">
+                <img src="{% static 'tienda/img/logo.jpg' %}" class="store-image" alt="Bootstrap" />
+            </a>
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+                data-target="#navbarContainer" aria-controls="navbarContainer" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarContainer">
+                {# Busqueda articulos #}
+                <form class="d-lg-none d-md-block search_mini_form" method="GET" action="/articulos">
+                    <div class="input-group mb-3">
+                        <input type="text" name="consulta" class="form-control form-control-sm"
+                            placeholder="Buscar artículos" />
+                        <button type="submit" class="btn btn-outline-secondary">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </form>
+                <ul id="navbarContainerMobile" class="navbar-nav d-lg-none">
+                    <li class="nav-item">
+                        <a href="/" title="Inicio" class="level-1 trsn nav-link">Inicio</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="level-1 trsn nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                            Marcas
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="/articulos/marca/1">Marca 1</a>
+                            <a class="dropdown-item" href="/articulos/marca/2">Marca 2</a>
+                            <a class="dropdown-item" href="/articulos/marca/3">Marca 3</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="level-1 trsn nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                            Categorías
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="/articulos/categoria/1">Categoría 1</a>
+                            <a class="dropdown-item" href="/articulos/categoria/2">Categoría 2</a>
+                            <a class="dropdown-item" href="/articulos/categoria/3">Categoría 3</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" title="Sobre nosotros" class="level-1 trsn nav-link">
+                            Sobre nosotros
+                        </a>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav float-right nav-top">
+                    <li>
+                        <a id="cart-link" href="/carrito" class="trsn nav-link" title="Ver carrito">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span id="nav-bar-cart"><span class="cart-size">0</span> Artículo(s) | S/.0</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/inicio-sesion" id="login-link" class="trsn nav-link" title="Iniciar Sesión">
+                            <i class="fas fa-user"></i>
+                            <span class="customer-name">Iniciar Sesión</span>
+                        </a>
+                    </li>
+                </ul>
+                <form class="navbar-form float-right form-inline d-none d-lg-flex search_mini_form" method="GET"
+                    action="/articulos">
+                    <input type="text" name="consulta" class="form-control form-control-sm"
+                        placeholder="Buscar artículos" />
+                    <button type="submit" class="btn btn-secondary btn-sm">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </form>
+                <ul class="social list-inline d-lg-none text-center"></ul>
+            </div>
+        </div>
+    </nav>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark d-none d-lg-block">
+        <div class="container">
+            <div class="collapse navbar-collapse" id="navbarsContainer-2">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a href="/" title="Inicio" class="level-1 trsn nav-link">Inicio</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="level-1 trsn nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                            Marcas
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="/articulos/marca/1">Marca 1</a>
+                            <a class="dropdown-item" href="/articulos/marca/2">Marca 2</a>
+                            <a class="dropdown-item" href="/articulos/marca/3">Marca 3</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="level-1 trsn nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                            Categorias
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="/articulos/categoria/1">Categoria 1</a>
+                            <a class="dropdown-item" href="/articulos/categoria/2">Categoria 2</a>
+                            <a class="dropdown-item" href="/articulos/categoria/3">Categoria 3</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/informacion" class="level-1 trsn nav-link">
+                            Sobre nosotros
+                        </a>
+                    </li>
+                </ul>
+                <ul class="social navbar-toggler-right list-inline"></ul>
+            </div>
+        </div>
+    </nav>
+</div>

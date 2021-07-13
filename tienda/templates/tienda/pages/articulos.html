@@ -1,0 +1,94 @@
+{% extends 'tienda/pages/base.html' %}
+{% load static %}
+{% block titulo %}
+Artículos
+{% endblock %}
+{% block contenido %}
+<section class="container">
+  <div class="row">
+    <section class="col-12 d-none d-md-block">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="/" class="trsn" title="Inicio">Inicio</a>
+        </li>
+
+        <li class="breadcrumb-item"><span>Artículos</span></li>
+      </ol>
+    </section>
+  </div>
+</section>
+
+<div class="container">
+  <!-- Page Heading -->
+  <div class="row">
+    <div class="col-12">
+      <h1 class="page-header">{{ titulo_busqueda }}</h1>
+    </div>
+  </div>
+  <!-- /.row -->
+
+  <div class="row">
+    <div class="col-6 product-gallery-amount mb-4 d-none d-md-block">
+      <span><strong>{{ articulos|length }} Artículos(s)</strong></span>
+    </div>
+
+    <div class="col-6 text-right product-gallery-query mb-4 d-none d-md-block">
+      {% if consulta %}
+      <span>Se ha buscado:</span> <strong>{{ consulta }}</strong>
+      {% endif %}
+    </div>
+
+
+    <!-- filter mobile -->
+    <div class="col-6 d-md-none">
+      <strong>{{ articulos|length }} Artículos(s)</strong>
+      <span class="d-block">Se ha buscado: <strong>{{ consulta }}</strong></span>
+    </div>
+
+    <!-- end filter mobile -->
+    <div class="col-lg-3 col-md-4">
+      <!-- no borrar, es para espaciado -->
+    </div>
+
+    <div class="col-lg-9 col-md-8">
+      <div class="row mb-md-5 mb-4 mx-n2">
+        <div class="col-lg-3 col-6 product-block mb-4 px-2">
+          <div class="main-category-image">
+            <a href="https://bootstrap.jumpseller.com/keyboarded-tablet"><img
+                class="img-fluid img-portfolio img-hover mb-3"
+                src="http://robots-argentina.com.ar/didactica/imagenes/pic16f876.jpg" alt="Producto 1" /></a>
+
+            <div class="caption">
+              <h3>
+                <a href="https://bootstrap.jumpseller.com/keyboarded-tablet">Artículo 1</a>
+              </h3>
+              <div class="price-mob mb-2">$200.000</div>
+              <div class="clearfix"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-6 product-block mb-4 px-2">
+          <div class="main-category-image">
+            <a href="https://bootstrap.jumpseller.com/imac-desktop-computer"><img
+                class="img-fluid img-portfolio img-hover mb-3"
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3Q1XDixZfbuazjEw6q-jPsycL-JHt1Pejwg&usqp=CAU"
+                alt="Producto 2" /></a>
+
+            <div class="caption">
+              <h3>
+                <a href="https://bootstrap.jumpseller.com/imac-desktop-computer">Artículo 2</a>
+              </h3>
+              <div class="price-mob mb-2">$1.200.000</div>
+              <div class="clearfix"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="clearfix"></div>
+        <div class="col-12 product-gallery-pager"></div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
