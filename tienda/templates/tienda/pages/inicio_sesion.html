@@ -2,9 +2,126 @@
 {% load static %}
 
 {% block titulo %}
-Inicio Sesión
+inicion sesion
 {% endblock %}
 
 {% block contenido %}
-<h1>Inicio sesión</h1>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" class="no-js wf-opensans-n3-active wf-opensans-n4-active wf-opensans-n5-active wf-opensans-n6-active wf-opensans-n7-active wf-opensans-n8-active wf-active"><!--<![endif]--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<script type="text/javascript">
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-JBWEC7QQTS');
+  order_items = null;
+</script>
+<script src="./login_files/jumpseller-2.0.0.js.descarga" defer="defer"></script>
+<script data-dapp-detection="">!function(){let e=!1;function n(){if(!e){const n=document.createElement("meta");n.name="dapp-detected",document.head.appendChild(n),e=!0}}if(window.hasOwnProperty("ethereum")){if(window.__disableDappDetectionInsertion=!0,void 0===window.ethereum)return;n()}else{var t=window.ethereum;Object.defineProperty(window,"ethereum",{configurable:!0,enumerable:!1,set:function(e){window.__disableDappDetectionInsertion||n(),t=e},get:function(){if(!window.__disableDappDetectionInsertion){const e=arguments.callee;e&&e.caller&&e.caller.toString&&-1!==e.caller.toString().indexOf("getOwnPropertyNames")||n()}return t}})}}();</script></head>
+
+<body>
+
+<section class="container">
+<div class="row">
+  <section class="col-12 d-none d-md-block">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="/" class="trsn" title="Go back to Home">Home</a></li>
+      <li class="breadcrumb-item"><span>Inicio de sesión del cliente</span></li>   
+    </ol>
+  </section>
+</div>
+</section>
+
+  <div class="container">
+<!-- Page Heading -->
+<div class="row">
+  <div class="col-12">
+    <h1 class="page-header">Ingresar </h1>
+  </div>
+</div>
+<!-- /.row -->
+<div class="row">
+  <div class="col-sm-6">
+    <div class="card mb-3">
+      <div class="card-body">
+        <form action="/perfil.html" accept-charset="UTF-8" method="post" id="login">  <div id="credentials">
+
+  <div id="credentials_email" class="field">
+    <label for="customer_credentials_email" class="control-label">Correo</label>
+    <input type="email" name="customer[email]" id="customer_email" class="text form-control" required="required" autocomplete="email">
+    
+  </div>
+  <div class="form-group"><div class="form-group"><div id="credentials_password" class="field">
+    <label for="customer_credentials_password" class="control-label">Contraseña</label>
+    <input type="password" name="customer[password]" id="customer_password" class="text form-control" required="required" autocomplete="current-password">
+    
+  </div></div></div>
+  <div class="actions">
+    <input type="submit" value="Ingresar" class="button btn btn-primary" id="submit_login">
+    <p>
+    <a href="#" onclick="reset_password();return false;" id="reset_password">Cambiar contraseña</a>
+    </p>
+    <a href="#" onclick="resume_login();" id="resume_login" style="display:none">Ingresar</a>
+  </div>
+</div>
+<input type="hidden"><input type="hidden"></form><script type="text/javascript">
+
+function reset_password(){
+  var login_form = document.getElementById("login");
+  login_form.action = '/customer/reset_password';
+  document.getElementById("submit_login").value = 'Reset Password';
+  document.getElementById("credentials_password").style.display = 'none'
+  document.getElementById("reset_password").style.display = 'none'
+  document.getElementById("customer_password").required = false
+  document.getElementById("resume_login").style.display = ''
+}
+
+function resume_login(){
+  var login_form = document.getElementById("login");
+  login_form.action = '/customer/create';
+  document.getElementById("submit_login").value = 'Log In';
+  document.getElementById("credentials_password").style.display = ''
+  document.getElementById("resume_login").style.display = 'none'
+  document.getElementById("reset_password").style.display = ''
+  document.getElementById("customer_password").required = true
+}
+</script>
+
+      </div>
+    </div>
+  </div>
+
+  <div id="customer-new" class="col-sm-6">
+    <div class="card">
+      <div class="card-header"><h2 class="card-title">Eres nuevo en la pagina?</h2></div>
+      <div class="card-body">
+        <p>registrate y aprovecha todas nuestras ofertas.</p>
+        <a href="/registrarse" class="btn btn-secondary btn-block" title="Register as Customer">
+          Registrarse
+        </a>
+      </div>
+    </div>
+  </div>
+
+</div>
+</div>
+  <!-- /.container -->
+
+  <!-- Css -->
+  <link rel="stylesheet" href="./login_files/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+  <!-- Bootstrap Core JavaScript -->
+  <script src="./login_files/popper.min.js.descarga"></script>
+  <script src="./login_files/bootstrap.min.js.descarga"></script>
+
+  <!-- Script to Activate Tooltips -->
+  <script>
+    $(function () {
+      $('[data-toggle="tooltip"]').tooltip()
+      $('.carousel').carousel()
+    })
+  </script>
+
+  <script src="./login_files/bootstrap-filestyle.min.js.descarga"></script>
+  <script src="./login_files/main.js.descarga"></script>
+
+</body></html>
 {% endblock %}
