@@ -1,10 +1,58 @@
 {% extends 'tienda/pages/base.html' %}
 {% load static %}
-
 {% block titulo %}
 Inicio
 {% endblock %}
-
 {% block contenido %}
-<h1>Inicio</h1>
+<div id="components">
+    <div id="component-76144">
+        <div class="container-fluid px-0">
+            <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img class="d-block w-100"
+                            src="https://assets.jumpseller.com/store/bootstrap/themes/382017/slider-demo.jpg?1619113824"
+                            alt="Second slide">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h1>Bienvenido</h1>
+                            <p>Encuentra la mayor gama de productos de electrónica aquí</p>
+                        </div>
+                    </div>
+                </div>
+                <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div id="component-76145">
+        <div id="featured-products-76145" class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h2 class="page-header">Artículos</h2>
+                </div>
+
+                <div class="col-md-3 col-6 product-block">
+                    <a href="https://bootstrap.jumpseller.com/wacom-tablet">
+                        <img class="img-fluid img-portfolio img-hover mb-3"
+                            src="https://cdnx.jumpseller.com/bootstrap/image/429444/resize/255/320?1614272621"
+                            alt="Producto X" />
+                    </a>
+                    <div class="caption">
+                        <h3>
+                            <a href="/articulos/12">Artículo X</a>
+                        </h3>
+                        <div class="price-mob mb-2">S/.100.0</div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}
