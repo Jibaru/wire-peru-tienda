@@ -6,5 +6,111 @@ Pedidos
 {% endblock %}
 
 {% block contenido %}
-<h1>Pedidos</h1>
+<section class="container">
+    <div class="row">
+        <section class="col-12 d-none d-md-block">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/" class="trsn" title="Inicio">Inicio</a></li>
+                <li class="breadcrumb-item"><span>Pedidos</span></li>
+            </ol>
+        </section>
+    </div>
+</section>
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h1 class="page-header">Pedidos</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div id="customer-summary">
+                <div id="customer-order-table" class="table-responsive">
+                    <table class="table table-striped text-center">
+                        <thead>
+                            <tr>
+                                <th><b>ID</b></th>
+                                <th><b>Núm. Comp.</b></th>
+                                <th><b>Tipo Comp.</b></th>
+                                <th><b>Serie Comp.</b></th>
+                                <th><b>Fecha Pedido</b></th>
+                                <th><b>Fecha Entrega</b></th>
+                                <th><b>Total</b></th>
+                                <th><b>Estado</b></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>105</td>
+                                <td>FACTURA</td>
+                                <td>10221</td>
+                                <td>
+                                    <span class="badge badge-primary">
+                                        12/05/2021
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="badge badge-success">
+                                        12/05/2021
+                                    </span>
+                                </td>
+                                <td>S/. 150.0</td>
+                                <td>
+                                    <span class="badge badge-warning">
+                                        ENTREGADO
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>105</td>
+                                <td>FACTURA</td>
+                                <td>10221</td>
+                                <td>
+                                    <span class="badge badge-primary">
+                                        12/05/2021
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="badge badge-secondary">
+                                        NO DISPONIBLE
+                                    </span>
+                                </td>
+                                <td>S/. 150.0</td>
+                                <td>
+                                    <button type="submit" class="btn btn-danger btn-sm">
+                                        <i class="fas fa-trash-alt"></i> Cancelar
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>105</td>
+                                <td>FACTURA</td>
+                                <td>10221</td>
+                                <td>
+                                    <span class="badge badge-primary">
+                                        12/05/2021
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="badge badge-secondary">
+                                        NO DISPONIBLE
+                                    </span>
+                                </td>
+                                <td>S/. 150.0</td>
+                                <td class="text-center">
+                                    <button type="submit" class="btn btn-danger btn-sm">
+                                        <i class="fas fa-trash-alt"></i> Cancelar
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}
