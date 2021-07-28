@@ -1,16 +1,12 @@
-{% extends 'tienda/pages/base.html' %}
-{% load static %}
-
-{% block titulo %}
-Registro
-{% endblock %}
-
-{% block contenido %}
+{% extends 'tienda/pages/base.html' %} {% load static %} {% block titulo %}
+Registro {% endblock %} {% block contenido %}
 <section class="container">
   <div class="row">
     <section class="col-12 d-none d-md-block">
       <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="/" class="trsn" title="Inicio">Inicio</a></li>
+        <li class="breadcrumb-item">
+          <a href="/" class="trsn" title="Inicio">Inicio</a>
+        </li>
         <li class="breadcrumb-item"><span>Registro</span></li>
       </ol>
     </section>
@@ -29,41 +25,75 @@ Registro
     <div class="col-12">
       <div class="card">
         <div class="card-body">
-          <form action="/perfil" accept-charset="UTF-8" method="post">
+          <form action="/registrarse" accept-charset="UTF-8" method="post">
+            {% csrf_token %}
             <div id="customer_details">
               <div class="form-group">
                 <label for="nombres" class="control-label">
                   Nombres <em>*</em>
                 </label>
-                <input type="text" name="nombres" id="nombres" class="text form-control" required="required">
+                <input
+                  type="text"
+                  name="nombres"
+                  id="nombres"
+                  class="text form-control"
+                  required="required"
+                />
               </div>
               <div class="form-group">
                 <label for="apepaterno" class="control-label">
                   Apellido Paterno <em>*</em>
                 </label>
-                <input type="text" name="apepaterno" id="apepaterno" class="text form-control" required="required">
+                <input
+                  type="text"
+                  name="apepaterno"
+                  id="apepaterno"
+                  class="text form-control"
+                  required="required"
+                />
               </div>
               <div class="form-group">
                 <label for="apematerno" class="control-label">
                   Apellido Materno <em>*</em>
                 </label>
-                <input type="text" name="apematerno" id="apematerno" class="text form-control" required="required">
+                <input
+                  type="text"
+                  name="apematerno"
+                  id="apematerno"
+                  class="text form-control"
+                  required="required"
+                />
               </div>
               <div class="form-group">
                 <label for="email" class="control-label">
                   Email <em>*</em>
                 </label>
-                <input type="email" name="email" id="email" class="text form-control" required="required">
+                <input
+                  type="email"
+                  name="email"
+                  id="email"
+                  class="text form-control"
+                  required="required"
+                />
               </div>
               <div class="form-group">
                 <label for="contrasenia" class="control-label">
                   Contraseña <em>*</em>
                 </label>
-                <input type="password" name="contrasenia" id="contrasenia" class="text form-control"
-                  required="required">
+                <input
+                  type="password"
+                  name="contrasenia"
+                  id="contrasenia"
+                  class="text form-control"
+                  required="required"
+                />
               </div>
               <div class="actions">
-                <input type="submit" value="Registrarse" class="button btn btn-primary">
+                <input
+                  type="submit"
+                  value="Registrarse"
+                  class="button btn btn-primary"
+                />
               </div>
             </div>
           </form>
