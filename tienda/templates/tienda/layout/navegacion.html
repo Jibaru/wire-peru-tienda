@@ -60,6 +60,7 @@
                             <span id="nav-bar-cart"><span class="cart-size">0</span> Artículo(s) | S/.0</span>
                         </a>
                     </li>
+                    {% if not request.session.autenticado %}
                     <li>
                         <a href="/inicio-sesion" id="login-link" class="trsn nav-link" title="Iniciar Sesión">
                             <span class="customer-name">
@@ -67,10 +68,12 @@
                             </span>
                         </a>
                     </li>
+                    {% endif %}
+                    {% if request.session.autenticado %}
                     <li>
                         <a href="/perfil" id="login-link" class="trsn nav-link" title="Perfil">
                             <span class="customer-name">
-                                <i class="fas fa-id-card-alt"></i> Perfil
+                                <i class="fas fa-id-card-alt"></i> {{ request.session.cliente.nombres }}
                             </span>
                         </a>
                     </li>
@@ -81,6 +84,14 @@
                             </span>
                         </a>
                     </li>
+                    <li>
+                        <a href="/cerrar-sesion" id="login-link" class="trsn nav-link" title="Cerrar Sesión">
+                            <span class="customer-name">
+                                <i class="fas fa-paste"></i> Cerrar sesión
+                            </span>
+                        </a>
+                    </li>
+                    {% endif %}
                 </ul>
                 <form class="navbar-form float-right form-inline d-none d-lg-flex search_mini_form" method="GET"
                     action="/articulos">
