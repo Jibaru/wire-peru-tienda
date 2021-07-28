@@ -24,5 +24,7 @@ def realizar_pedido(request):
 
 
 def listar_pedidos(request):
+    if 'autenticado' not in request.session:
+        return redirect('/')
     # TODO: Buscar pedidos
     return render(request, 'tienda/pages/pedidos.html')
