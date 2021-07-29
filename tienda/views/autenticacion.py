@@ -30,6 +30,7 @@ def iniciar_sesion(request):
             'dni': cliente.dni,
             'telefono': cliente.telefono,
             'email': cliente.email,
+            'direccion': cliente.direccion
         }
         request.session.modified = True
 
