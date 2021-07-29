@@ -30,7 +30,7 @@ Carrito
     </div>
     <!-- /.row -->
 
-    {% if False %}
+    {% if not request.session.carrito %}
     <div class="row">
         <section class="col-12">
             <div class="bg-info alert text-white">
@@ -46,7 +46,7 @@ Carrito
     <!-- Cart Table -->
     <div class="row">
         <div class="col-lg-8 mb-4">
-            <form id="cart-update-form" method="post" action="https://bootstrap.jumpseller.com/cart/update">
+            <form id="cart-update-form">
                 <div class="table-responsive">
                     <table class="table">
                         <thead>
@@ -59,26 +59,28 @@ Carrito
                             </tr>
                         </thead>
                         <tbody>
+                            {% for articulo in request.session.carrito %}
                             <tr>
                                 <td>
-                                    <h3>Artículo X</h3>
+                                    <h3>{{ articulo.nombre }}</h3>
                                 </td>
                                 <td class="text-center mob-hide">
-                                    <a href="/articulos/12" class="trsn" title="Articulo X">
-                                        <img src="https://cdnx.jumpseller.com/bootstrap/image/14896546/resize/120/150?1614272621"
-                                            alt="Wacom Bamboo Tablet" title="Articulo X">
+                                    <a href="{{ articulo.pagina }}" class="trsn" title="{{ articulo.nombre }}">
+                                        <img width="100" lenght="100" src="{{ articulo.imagen }}"
+                                            alt="{{ articulo.nombre }}" title="{{ articulo.nombre }}">
                                     </a>
                                 </td>
                                 <td class="mob-hide">
-                                    <span class="order-product-price">S/. 100.0</span>
+                                    <span class="order-product-price">S/. {{ articulo.precio }}</span>
                                 </td>
                                 <td>
-                                    <span>1</span>
+                                    <span>{{ articulo.cantidad }}</span>
                                 </td>
                                 <td>
-                                    <span class="order-product-subtotal">S/. 100.0</span>
+                                    <span class="order-product-subtotal">S/. {{ articulo.subtotal }}</span>
                                 </td>
                             </tr>
+                            {% endfor %}
                         </tbody>
                     </table>
                 </div>
@@ -93,11 +95,11 @@ Carrito
                         <tbody>
                             <tr class="totals">
                                 <td colspan="1" class="text-left">Envío</td>
-                                <td colspan="1" class="text-right">S/. 0</td>
+                                <td colspan="1" class="text-right">S/. {{ request.session.pedido.envio }}</td>
                             </tr>
                             <tr class="totals key">
                                 <td colspan="1" class="text-left"><strong>Total</strong></td>
-                                <td colspan="1" class="text-right"><strong>S/. 100.0</strong></td>
+                                <td colspan="1" class="text-right"><strong>S/. {{ request.session.pedido.total }}</strong></td>
                             </tr>
                         </tbody>
                     </table>

@@ -40,72 +40,30 @@ Pedidos
                             </tr>
                         </thead>
                         <tbody>
+                            {% for pedido in pedidos %}
                             <tr>
-                                <td>1</td>
-                                <td>105</td>
-                                <td>FACTURA</td>
-                                <td>10221</td>
+                                <td>{{ pedido.id_pedido }}</td>
+                                <td>{{ pedido.num_comprob }}</td>
+                                <td>{{ pedido.tipo_comprob }}</td>
+                                <td>{{ pedido.serie_comprob }}</td>
                                 <td>
                                     <span class="badge badge-primary">
-                                        12/05/2021
+                                        {{ pedido.fecha_pedido.day }} / {{ pedido.fecha_pedido.month }} / {{ pedido.fecha_pedido.year }}
                                     </span>
                                 </td>
                                 <td>
                                     <span class="badge badge-success">
-                                        12/05/2021
+                                        {{ pedido.fecha_entrega.day  }} / {{ pedido.fecha_entrega.month }} / {{ pedido.fecha_entrega.year }}
                                     </span>
                                 </td>
-                                <td>S/. 150.0</td>
+                                <td>S/. {{ pedido.total }}</td>
                                 <td>
                                     <span class="badge badge-warning">
-                                        ENTREGADO
+                                        {{ pedido.estado_pedido }}
                                     </span>
                                 </td>
                             </tr>
-                            <tr>
-                                <td>1</td>
-                                <td>105</td>
-                                <td>FACTURA</td>
-                                <td>10221</td>
-                                <td>
-                                    <span class="badge badge-primary">
-                                        12/05/2021
-                                    </span>
-                                </td>
-                                <td>
-                                    <span class="badge badge-secondary">
-                                        NO DISPONIBLE
-                                    </span>
-                                </td>
-                                <td>S/. 150.0</td>
-                                <td>
-                                    <button type="submit" class="btn btn-danger btn-sm">
-                                        <i class="fas fa-trash-alt"></i> Cancelar
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>1</td>
-                                <td>105</td>
-                                <td>FACTURA</td>
-                                <td>10221</td>
-                                <td>
-                                    <span class="badge badge-primary">
-                                        12/05/2021
-                                    </span>
-                                </td>
-                                <td>
-                                    <span class="badge badge-secondary">
-                                        NO DISPONIBLE
-                                    </span>
-                                </td>
-                                <td>S/. 150.0</td>
-                                <td class="text-center">
-                                    <button type="submit" class="btn btn-danger btn-sm">
-                                        <i class="fas fa-trash-alt"></i> Cancelar
-                                    </button>
-                                </td>
-                            </tr>
+                            {% endfor %}
                         </tbody>
                     </table>
                 </div>

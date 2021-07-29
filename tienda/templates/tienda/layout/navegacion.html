@@ -57,7 +57,9 @@
                     <li>
                         <a id="cart-link" href="/carrito" class="trsn nav-link" title="Ver carrito">
                             <i class="fas fa-shopping-cart"></i>
-                            <span id="nav-bar-cart"><span class="cart-size">0</span> Artículo(s) | S/.0</span>
+                            {% if request.session.carrito %}
+                            <span id="nav-bar-cart"><span class="cart-size">{{ request.session.pedido.cantidad_articulos }}</span> Artículo(s) | S/. {{ request.session.pedido.total }}</span>
+                            {% endif %}
                         </a>
                     </li>
                     {% if not request.session.autenticado %}

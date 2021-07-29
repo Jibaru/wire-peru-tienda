@@ -6,5 +6,40 @@ Pedido realizado
 {% endblock %}
 
 {% block contenido %}
-<h1>Pedido Realizado</h1>
+<section class="container">
+    <div class="row">
+        <section class="col-12 d-none d-md-block">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="/" class="trsn" title="Inicio">Inicio</a>
+                </li>
+                <li class="breadcrumb-item">
+                    <span>Pedido realizado con éxito</span>
+                </li>
+            </ol>
+        </section>
+    </div>
+</section>
+
+<div class="container">
+    <!-- Page Heading -->
+    <div class="row">
+        <div class="col-12">
+            <h1 class="page-header">Pedido realizado con éxito</h1>
+        </div>
+    </div>
+    <!-- /.row -->
+
+    <div class="row">
+        <section class="col-12">
+            <div class="bg-info alert text-white">
+                Pedido realizado con éxito con Nº comprobante {{ pedido.num_comprob }}
+            </div>
+            <a href="/pedidos" class="btn btn-link" title="&larr; Ver pedidos">
+                &larr; Ver pedidos
+            </a>
+        </section>
+    </div>
+
+</div>
 {% endblock %}
