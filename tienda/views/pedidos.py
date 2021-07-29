@@ -34,11 +34,13 @@ def agregar_articulo(request):
             'pagina': F'/articulos/{articulo.id_articulo}'
         })
 
-        request.session['pedido']['total'] = reduce(
-            lambda a, b: a['subtotal'] + b['subtotal'], 
-            request.session['carrito'])
+        total = 0.0
+        for articulo in request.session['carrito']:
+            total += articulo['subtotal']
+
+        request.session['pedido']['total'] = total
         request.session['pedido']['envio'] = 10.0
-        request.session['pedido']['cantidad_articulos'] = request.session['carrito']
+        request.session['pedido']['cantidad_articulos'] = len(request.session['carrito'])
 
         request.session.modified = True
     except Exception as e:
@@ -49,7 +51,7 @@ def agregar_articulo(request):
 
 def verificar_pedido(request):
     if 'autenticado' not in request.session:
-        return redirect('/')
+        return redirect('/inicio-sesion')
     if 'carrito' not in request.session:
         return redirect('/')
     if len(request.session['carrito']) == 0:
@@ -66,7 +68,7 @@ def realizar_pedido(request):
     if len(request.session['carrito']) == 0:
         return redirect('/')
     pedido = Pedido(
-        estado_pedido = 'HABILITADO',
+        estado_pedido = 'PENDIENTE',
         num_comprob = '0123ABC',
         total = request.session['pedido']['total'],
         impuesto = request.session['pedido']['envio'],
