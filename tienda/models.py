@@ -87,7 +87,7 @@ class Articulo(models.Model):
     imagen = models.TextField(blank=False, null=False)
     descripcion = models.TextField(blank=False, null=False)
     precio = models.FloatField()
-    id_marca = models.ForeignKey(Marca, on_delete=models.CASCADE)
+    id_marca = models.ForeignKey(Marca, on_delete = models.SET_NULL, null = True)
 
     class Meta:
         verbose_name = 'Articulo'
@@ -99,11 +99,11 @@ class Articulo(models.Model):
 
 class Articulo_Categoria(models.Model):
     id_articulo = models.ForeignKey(Articulo, on_delete=models.CASCADE)
-    id_categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE)
+    id_categoria = models.ForeignKey(Categoria, on_delete = models.SET_NULL, null = True)
 
 class Pedido_Articulo(models.Model):
-    id_pedido = models.ForeignKey(Pedido, on_delete=models.CASCADE)
-    id_articulo = models.ForeignKey(Articulo, on_delete=models.CASCADE)
+    id_pedido = models.ForeignKey(Pedido, on_delete = models.SET_NULL, null = True)
+    id_articulo = models.ForeignKey(Articulo, on_delete = models.SET_NULL, null = True)
     cantidad = models.IntegerField()
 
 
