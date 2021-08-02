@@ -29,6 +29,7 @@ urlpatterns = [
     path('articulos/marca/<int:idmarca>', views.listar_articulos_por_marca),
     path('carrito', views.carrito),
     path('agregar-articulo', views.agregar_articulo),
+    path('remover-articulo', views.remover_articulo),
     path('pedidos', views.listar_pedidos),
     path('verificar-pedido', views.verificar_pedido),
     path('realizar-pedido', views.realizar_pedido),
