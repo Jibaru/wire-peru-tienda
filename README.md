@@ -20,3 +20,13 @@ python manage.py migrate
 ```
 python manage.py createsupeuser
 ```
+
+## BD Ejemplo
+
+Crear una copia de `ejemplo.db.sqlite3` removiendo `ejemplo.`
+El superusuario es:
+
+```
+Usuario: admin
+Contraseña: 123456789
+```
