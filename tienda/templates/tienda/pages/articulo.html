@@ -17,7 +17,7 @@ Artículo
                     <a href="/articulos" class="trsn" title="Artículos">Artículos</a>
                 </li>
                 <li class="breadcrumb-item">
-                    <span>Artículo X</span>
+                    <span>{{articulo.nombre}}</span>
                 </li>
             </ol>
         </section>
@@ -28,7 +28,7 @@ Artículo
     <!-- Page Heading -->
     <div class="row">
         <div class="col-12">
-            <h1 class="page-header">Artículo X</h1>
+            <h1 class="page-header">{{articulo.nombre}}</h1>
         </div>
     </div>
     <!-- /.row -->
@@ -41,8 +41,8 @@ Artículo
                         <div class="carousel-inner" role="listbox">
                             <div class="carousel-item active">
                                 <img id="first-image"
-                                    src="https://images.jumpseller.com/store/bootstrap/224300/grey-bamboo.jpg?1614272621"
-                                    alt="Artículo X" class="img-fluid">
+                                    src="{{articulo.imagen}}"
+                                    alt="{{articulo.nombre}}" class="img-fluid">
                             </div>
                         </div>
                     </div>
@@ -53,12 +53,12 @@ Artículo
         <div class="col-lg-6">
             <form class="form-horizontal" action="/agregar-articulo" method="POST">
                 {% csrf_token %}
-<input type="hidden" value="1" name="id_articulo"/>
+<input type="hidden" value="{{articulo.id_articulo}}" name="id_articulo"/>
                 <!-- Product Price  -->
                 <div class="form-group price_elem row">
                     <label class="col-sm-3 col-md-3 form-control-label nopaddingtop">Precio:</label>
                     <div class="col-sm-8 col-md-9">
-                        <span class="product-form-price" id="product-form-price">S/. 100.0</span>
+                        <span class="product-form-price" id="product-form-price">{{articulo.precio}}</span>
                     </div>
                 </div>
 
@@ -81,16 +81,14 @@ Artículo
                 <div class="form-group row">
                     <label class="col-sm-3 col-md-3 form-control-label">Descripción:</label>
                     <div class="col-sm-8 col-md-9 description">
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi consequuntur saepe, voluptatem
-                            dolorum sed natus non ipsam culpa nesciunt doloremque, reiciendis aliquam. Corrupti ducimus
-                            amet ipsam eius aliquam aliquid asperiores?</p>
+                        <p>{{articulo.descripcion}}</p>
                     </div>
                 </div>
 
                 <div class="form-group row">
                     <label class="col-sm-3 col-md-3 form-control-label">Detalles:</label>
                     <div class="col-sm-9 col-md-9">
-                        <p>Marca: Wacom</p>
+                        <p>Marca: {{articulo.id_marca.nombre}}</p>
                     </div>
                 </div>
 

@@ -36,21 +36,23 @@ Inicio
                 <div class="col-12">
                     <h2 class="page-header">Artículos</h2>
                 </div>
+                {% for articulo in articulos%}
 
                 <div class="col-md-3 col-6 product-block">
-                    <a href="https://bootstrap.jumpseller.com/wacom-tablet">
+                    <a href="/articulos/{{articulo.id_articulo}}">
                         <img class="img-fluid img-portfolio img-hover mb-3"
-                            src="https://cdnx.jumpseller.com/bootstrap/image/429444/resize/255/320?1614272621"
+                            src="{{articulo.imagen}}"
                             alt="Producto X" />
                     </a>
                     <div class="caption">
                         <h3>
-                            <a href="/articulos/12">Artículo X</a>
+                            <a href="/articulos/{{articulo.id_articulo}}">{{articulo.nombre}}</a>
                         </h3>
-                        <div class="price-mob mb-2">S/.100.0</div>
+                        <div class="price-mob mb-2">{{articulo.precio}}</div>
                         <div class="clearfix"></div>
                     </div>
                 </div>
+                {%endfor%}
             </div>
         </div>
     </div>
