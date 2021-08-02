@@ -10,23 +10,21 @@ Inicio
             <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img class="d-block w-100"
-                            src="https://assets.jumpseller.com/store/bootstrap/themes/382017/slider-demo.jpg?1619113824"
-                            alt="Second slide">
+                        <img class="d-block w-100" src="{% static 'tienda/img/slider-demo.jpg' %}" alt="Wire Perú">
                         <div class="carousel-caption d-none d-md-block">
                             <h1>Bienvenido</h1>
                             <p>Encuentra la mayor gama de productos de electrónica aquí</p>
                         </div>
                     </div>
                 </div>
-                <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                <!--<a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                     <span class="sr-only">Previous</span>
                 </a>
                 <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                     <span class="sr-only">Next</span>
-                </a>
+                </a>-->
             </div>
         </div>
     </div>
@@ -40,8 +38,7 @@ Inicio
 
                 <div class="col-md-3 col-6 product-block">
                     <a href="/articulos/{{articulo.id_articulo}}">
-                        <img class="img-fluid img-portfolio img-hover mb-3"
-                            src="{{articulo.imagen}}"
+                        <img class="img-fluid img-portfolio img-hover mb-3" src="{{articulo.imagen}}"
                             alt="Producto X" />
                     </a>
                     <div class="caption">
