@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.utils.translation import gettext_lazy as _
 # Create your models here.
 
 '''
@@ -59,13 +59,29 @@ class Categoria(models.Model):
         return self.nombre
 
 class Pedido(models.Model):
+    COSTO_ENVIO = 10.0
+    IMPUESTO = 0.05
+    class EstadoPedido(models.TextChoices):
+        PENDIENTE = 'PENDIENTE', _('Pendiente')
+        COMPLETADO = 'COMPLETADO', _('Completado')
+        CANCELADO = 'CANCELADO', _('Cancelado')
+    
+    class TipoComprobante(models.TextChoices):
+        BOLETA = 'BOLETA', _('Boleta')
+        FACTURA = 'FACTURA', _('Factura')
+        def from_str(val):
+            if val == Pedido.TipoComprobante.BOLETA.name:
+                return Pedido.TipoComprobante.BOLETA
+            if val == Pedido.TipoComprobante.FACTURA.name:
+                return Pedido.TipoComprobante.FACTURA
+
     id_pedido = models.AutoField(primary_key=True)
-    estado_pedido = models.CharField(max_length=20, blank=False, null=False)
+    estado_pedido = models.CharField(max_length=20, blank=False, null=False, choices=EstadoPedido.choices, default=EstadoPedido.PENDIENTE)
     num_comprob = models.CharField(max_length=18, blank=False, null=False)
     total = models.FloatField()
     impuesto = models.FloatField()
     serie_comprob = models.CharField(max_length=20, blank=False, null=False)
-    tipo_comprob = models.CharField(max_length=40, blank=False, null=False)
+    tipo_comprob = models.CharField(max_length=40, blank=False, null=False, choices=TipoComprobante.choices, default=TipoComprobante.BOLETA)
     fecha_entrega = models.DateTimeField()
     fecha_pedido = models.DateTimeField(auto_now_add=True)
     id_cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE)
@@ -79,8 +95,12 @@ class Pedido(models.Model):
         return self.num_comprob
 
 class Articulo(models.Model):
+    class EstadoArticulo(models.TextChoices):
+        HABILITADO = 'HABILITADO', _('Habilitado')
+        DESHABILITADO = 'DESHABILITADO', _('Deshabilitado')
+
     id_articulo = models.AutoField(primary_key=True)
-    estado_articulo = models.CharField(max_length=20, blank=False, null=False)
+    estado_articulo = models.CharField(max_length=20, blank=False, null=False, choices=EstadoArticulo.choices, default=EstadoArticulo.HABILITADO)
     nombre = models.CharField(max_length=30, blank=False, null=False)
     codigo = models.CharField(max_length=20, blank=False, null=False)
     stock = models.IntegerField()
@@ -105,7 +125,3 @@ class Pedido_Articulo(models.Model):
     id_pedido = models.ForeignKey(Pedido, on_delete = models.SET_NULL, null = True)
     id_articulo = models.ForeignKey(Articulo, on_delete = models.SET_NULL, null = True)
     cantidad = models.IntegerField()
-
-
-
-
