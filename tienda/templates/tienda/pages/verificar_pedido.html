@@ -78,37 +78,70 @@ Verificar pedido
         <div class="col-lg-4 mb-4">
             <div class="row">
                 <div class="col-12 cart-totals">
-                    <table class="table table-striped">
-                        <tbody>
-                            <tr class="totals">
-                                <td colspan="1" class="text-left">Envío</td>
-                                <td colspan="1" class="text-right">S/. {{ request.session.pedido.envio }}</td>
-                            </tr>
-                            <tr class="totals key">
-                                <td colspan="1" class="text-left">
-                                    <strong>Total</strong>
-                                </td>
-                                <td colspan="1" class="text-right">
-                                    <strong>S/. {{ request.session.pedido.total }}</strong>
-                                </td>
-                            </tr>
-                            <tr class="totals key">
-                                <td colspan="1" class="text-left">
-                                    <strong>Dirección de envío</strong>
-                                </td>
-                                <td colspan="1" class="text-right">
-                                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sit, officia. Sed at reprehenderit itaque, illo recusandae temporibus officiis aut eos nisi cumque rem expedita natus delectus id. Hic, aspernatur illo?
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <div class="text-center cart-actions">
-                        <form action="/realizar-pedido">
+                    <form action="/realizar-pedido" method="POST">
+                        {% csrf_token %}
+                        <table class="table table-striped">
+                            <tbody>
+                                <tr class="totals">
+                                    <td colspan="2" class="text-left">Envío</td>
+                                    <td colspan="1" class="text-left">S/.</td>
+                                    <td colspan="1" class="text-right">{{ envio }}</td>
+                                </tr>
+                                <tr class="totals key">
+                                    <td colspan="2" class="text-left">
+                                        <strong>Total</strong>
+                                    </td>
+                                    <td colspan="1" class="text-left">S/.</td>
+                                    <td colspan="1" class="text-right">
+                                        <span>{{request.session.pedido.total}}</span>
+                                    </td>
+                                </tr>
+                                <tr class="totals key">
+                                    <td colspan="2" class="text-left">
+                                        <strong>Impuesto</strong>
+                                    </td>
+                                    <td colspan="1" class="text-left">%</td>
+                                    <td colspan="1" class="text-right">
+                                        <span>{{ impuesto }}</span>
+                                    </td>
+                                </tr>
+                                <tr class="totals key">
+                                    <td colspan="2" class="text-left">
+                                        <strong>Total a pagar</strong>
+                                    </td>
+                                    <td colspan="1" class="text-left">S/.</td>
+                                    <td colspan="1" class="text-right">
+                                        <strong>{{ total_pagar }}</strong>
+                                    </td>
+                                </tr>
+                                <tr class="totals key">
+                                    <td colspan="3" class="text-left">
+                                        <strong>Tipo Comprobante</strong>
+                                    </td>
+                                    <td colspan="1" class="text-right">
+                                        <select name="tipo_comprobante" class="form-control" required>
+                                            {% for key, val in tipo_comprobantes %}
+                                            <option value="{{key}}">{{val}}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr class="totals key">
+                                    <td colspan="2" class="text-left">
+                                        <strong>Dirección de envío</strong>
+                                    </td>
+                                    <td colspan="1" class="text-right">
+                                        {{ request.session.cliente.direccion }}
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="text-center cart-actions">
                             <button class="btn btn-primary btn-block">
                                 Comprar
                             </button>
-                        </form>
-                    </div>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>

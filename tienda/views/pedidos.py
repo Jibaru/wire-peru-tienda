@@ -8,7 +8,16 @@ from django.shortcuts import render, redirect
 
 
 def carrito(request):
-    return render(request, 'tienda/pages/carrito.html')
+    total_pagar = 0.0
+    if 'pedido' in request.session:
+        total_pagar = float(request.session['pedido']['total']) * Pedido.IMPUESTO + Pedido.COSTO_ENVIO
+
+    return render(request, 'tienda/pages/carrito.html', {
+        'impuesto': Pedido.IMPUESTO * 100,
+        'envio': Pedido.COSTO_ENVIO,
+        'tipo_comprobantes': Pedido.TipoComprobante.choices,
+        'total_pagar': total_pagar
+    })
 
 
 def agregar_articulo(request):
@@ -39,7 +48,6 @@ def agregar_articulo(request):
             total += articulo['subtotal']
 
         request.session['pedido']['total'] = total
-        request.session['pedido']['envio'] = 10.0
         request.session['pedido']['cantidad_articulos'] = len(request.session['carrito'])
 
         request.session.modified = True
@@ -67,7 +75,6 @@ def remover_articulo(request):
             total += articulo['subtotal']
 
         request.session['pedido']['total'] = total
-        request.session['pedido']['envio'] = 10.0
         request.session['pedido']['cantidad_articulos'] = len(request.session['carrito'])
 
         request.session.modified = True
@@ -81,8 +88,16 @@ def verificar_pedido(request):
         return redirect('/')
     if len(request.session['carrito']) == 0:
         return redirect('/')
+    total_pagar = 0.0
+    if 'pedido' in request.session:
+        total_pagar = float(request.session['pedido']['total']) * Pedido.IMPUESTO + Pedido.COSTO_ENVIO
 
-    return render(request, 'tienda/pages/verificar_pedido.html')
+    return render(request, 'tienda/pages/verificar_pedido.html', {
+        'impuesto': Pedido.IMPUESTO * 100,
+        'envio': Pedido.COSTO_ENVIO,
+        'tipo_comprobantes': Pedido.TipoComprobante.choices,
+        'total_pagar': total_pagar 
+    })
 
 
 def realizar_pedido(request):
@@ -92,17 +107,28 @@ def realizar_pedido(request):
         return redirect('/')
     if len(request.session['carrito']) == 0:
         return redirect('/')
+
+    tipo_comprobante = request.POST.get('tipo_comprobante')
+    tipo_comprobante = Pedido.TipoComprobante.from_str(tipo_comprobante)
+
     pedido = Pedido(
-        estado_pedido = 'PENDIENTE',
-        num_comprob = '0123ABC',
-        total = request.session['pedido']['total'],
-        impuesto = request.session['pedido']['envio'],
-        serie_comprob = '1BC',
-        tipo_comprob = 'BOLETA',
+        estado_pedido = Pedido.EstadoPedido.PENDIENTE,
+        num_comprob = '#',
+        total = float(request.session['pedido']['total']) + Pedido.COSTO_ENVIO,
+        impuesto = Pedido.IMPUESTO,
+        serie_comprob = '#', # Boletas, # FA01 -> Facturas
+        tipo_comprob = tipo_comprobante,
         fecha_pedido = datetime.datetime.now(),
         fecha_entrega = datetime.datetime.now(),
         id_cliente = Cliente.objects.get(id_cliente = request.session['cliente']['id_cliente'])
     )
+    pedido.save()
+    pedido.num_comprob = F'{pedido.id_cliente}{pedido.id_pedido}'
+    
+    if tipo_comprobante == Pedido.TipoComprobante.BOLETA:
+        pedido.serie_comprob = F'BA{pedido.id_pedido}'
+    if tipo_comprobante == Pedido.TipoComprobante.FACTURA:
+        pedido.serie_comprob = F'FA{pedido.id_pedido}'
     pedido.save()
 
     for articulo in request.session['carrito']:
