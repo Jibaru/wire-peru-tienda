@@ -62,8 +62,9 @@
                         <a id="cart-link" href="/carrito" class="trsn nav-link" title="Ver carrito">
                             <i class="fas fa-shopping-cart"></i>
                             {% if request.session.carrito %}
-                            <span id="nav-bar-cart"><span class="cart-size">{{ request.session.pedido.cantidad_articulos
-                                    }}</span> Artículo(s) | S/. {{ request.session.pedido.total }}</span>
+                            <span id="nav-bar-cart"><span class="cart-size">
+                                    {{request.session.pedido.cantidad_articulos}}</span> Artículo(s) | S/.
+                                {{request.session.pedido.total}}</span>
                             {% else %}
                             <span id="nav-bar-cart"><span class="cart-size">0</span> Artículo(s) | S/.0.0</span>
                             {% endif %}
