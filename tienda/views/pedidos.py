@@ -46,8 +46,33 @@ def agregar_articulo(request):
     except Exception as e:
         print(e)
 
-    return redirect("/")
+    return redirect(request.META['HTTP_REFERER'])
 
+def remover_articulo(request):
+    if 'carrito' not in request.session:
+        return redirect('/carrito')
+
+    id_articulo = request.POST.get('id_articulo')
+    i = 0
+    encontrado = False
+    cantidadElementos = len(request.session['carrito'])
+    while not encontrado and i < cantidadElementos:
+        encontrado = request.session['carrito'][i]['id_articulo'] == id_articulo
+        i += 1
+
+    if encontrado:
+        del request.session['carrito'][i - 1]
+        total = 0.0
+        for articulo in request.session['carrito']:
+            total += articulo['subtotal']
+
+        request.session['pedido']['total'] = total
+        request.session['pedido']['envio'] = 10.0
+        request.session['pedido']['cantidad_articulos'] = len(request.session['carrito'])
+
+        request.session.modified = True
+
+    return redirect(request.META['HTTP_REFERER'])
 
 def verificar_pedido(request):
     if 'autenticado' not in request.session:
