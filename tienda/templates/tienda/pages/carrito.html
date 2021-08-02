@@ -46,45 +46,53 @@ Carrito
     <!-- Cart Table -->
     <div class="row">
         <div class="col-lg-8 mb-4">
-            <form id="cart-update-form">
-                <div class="table-responsive">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>Artículo</th>
-                                <th class="mob-hide"></th>
-                                <th class="mob-hide">Precio unitario</th>
-                                <th class="table-qty">Cantidad</th>
-                                <th>Subtotal</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {% for articulo in request.session.carrito %}
-                            <tr>
-                                <td>
-                                    <h3>{{ articulo.nombre }}</h3>
-                                </td>
-                                <td class="text-center mob-hide">
-                                    <a href="{{ articulo.pagina }}" class="trsn" title="{{ articulo.nombre }}">
-                                        <img width="100" lenght="100" src="{{ articulo.imagen }}"
-                                            alt="{{ articulo.nombre }}" title="{{ articulo.nombre }}">
-                                    </a>
-                                </td>
-                                <td class="mob-hide">
-                                    <span class="order-product-price">S/. {{ articulo.precio }}</span>
-                                </td>
-                                <td>
-                                    <span>{{ articulo.cantidad }}</span>
-                                </td>
-                                <td>
-                                    <span class="order-product-subtotal">S/. {{ articulo.subtotal }}</span>
-                                </td>
-                            </tr>
-                            {% endfor %}
-                        </tbody>
-                    </table>
-                </div>
-            </form>
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Artículo</th>
+                            <th class="mob-hide"></th>
+                            <th class="mob-hide">Precio unitario</th>
+                            <th class="table-qty">Cantidad</th>
+                            <th>Subtotal</th>
+                            <th>Eliminar</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for articulo in request.session.carrito %}
+                        <tr>
+                            <td>
+                                <h5>{{ articulo.nombre }}</h5>
+                            </td>
+                            <td class="text-center mob-hide">
+                                <a href="{{ articulo.pagina }}" class="trsn" title="{{ articulo.nombre }}">
+                                    <img width="100" lenght="100" src="{{ articulo.imagen }}"
+                                        alt="{{ articulo.nombre }}" title="{{ articulo.nombre }}">
+                                </a>
+                            </td>
+                            <td class="mob-hide">
+                                <span class="order-product-price">S/. {{ articulo.precio }}</span>
+                            </td>
+                            <td>
+                                <span>{{ articulo.cantidad }}</span>
+                            </td>
+                            <td>
+                                <span class="order-product-subtotal">S/. {{ articulo.subtotal }}</span>
+                            </td>
+                            <td>
+                                <form action="/remover-articulo" method="POST">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="id_articulo" value="{{ articulo.id_articulo }}">
+                                    <button type="submit" class="btn btn-sm btn-warning">
+                                        X
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
         </div>
 
         <!-- Cart Options -->
@@ -98,8 +106,12 @@ Carrito
                                 <td colspan="1" class="text-right">S/. {{ request.session.pedido.envio }}</td>
                             </tr>
                             <tr class="totals key">
-                                <td colspan="1" class="text-left"><strong>Total</strong></td>
-                                <td colspan="1" class="text-right"><strong>S/. {{ request.session.pedido.total }}</strong></td>
+                                <td colspan="1" class="text-left">
+                                    <strong>Total</strong>
+                                </td>
+                                <td colspan="1" class="text-right">
+                                    <strong>S/. {{request.session.pedido.total}}</strong>
+                                </td>
                             </tr>
                         </tbody>
                     </table>
