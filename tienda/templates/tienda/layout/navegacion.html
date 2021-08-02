@@ -31,9 +31,11 @@
                             Marcas
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="/articulos/marca/1">Marca 1</a>
-                            <a class="dropdown-item" href="/articulos/marca/2">Marca 2</a>
-                            <a class="dropdown-item" href="/articulos/marca/3">Marca 3</a>
+                            {% for marca in marcas_nav %}
+                            <a class="dropdown-item" href="/articulos/marca/{{marca.id_marca}}">
+                                {{ marca.nombre }}
+                            </a>
+                            {% endfor %}
                         </div>
                     </li>
                     <li class="nav-item dropdown">
@@ -42,9 +44,11 @@
                             Categorías
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="/articulos/categoria/1">Categoría 1</a>
-                            <a class="dropdown-item" href="/articulos/categoria/2">Categoría 2</a>
-                            <a class="dropdown-item" href="/articulos/categoria/3">Categoría 3</a>
+                            {% for categoria in categorias_nav %}
+                            <a class="dropdown-item" href="/articulos/categoria/{{categoria.id_categoria}}">
+                                {{ categoria.nombre }}
+                            </a>
+                            {% endfor %}
                         </div>
                     </li>
                     <li class="nav-item">
@@ -58,7 +62,8 @@
                         <a id="cart-link" href="/carrito" class="trsn nav-link" title="Ver carrito">
                             <i class="fas fa-shopping-cart"></i>
                             {% if request.session.carrito %}
-                            <span id="nav-bar-cart"><span class="cart-size">{{ request.session.pedido.cantidad_articulos }}</span> Artículo(s) | S/. {{ request.session.pedido.total }}</span>
+                            <span id="nav-bar-cart"><span class="cart-size">{{ request.session.pedido.cantidad_articulos
+                                    }}</span> Artículo(s) | S/. {{ request.session.pedido.total }}</span>
                             {% else %}
                             <span id="nav-bar-cart"><span class="cart-size">0</span> Artículo(s) | S/.0.0</span>
                             {% endif %}
@@ -123,9 +128,11 @@
                             Marcas
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="/articulos/marca/1">Marca 1</a>
-                            <a class="dropdown-item" href="/articulos/marca/2">Marca 2</a>
-                            <a class="dropdown-item" href="/articulos/marca/3">Marca 3</a>
+                            {% for marca in marcas_nav %}
+                            <a class="dropdown-item" href="/articulos/marca/{{marca.id_marca}}">
+                                {{ marca.nombre }}
+                            </a>
+                            {% endfor %}
                         </div>
                     </li>
                     <li class="nav-item dropdown">
@@ -134,9 +141,11 @@
                             Categorias
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="/articulos/categoria/1">Categoria 1</a>
-                            <a class="dropdown-item" href="/articulos/categoria/2">Categoria 2</a>
-                            <a class="dropdown-item" href="/articulos/categoria/3">Categoria 3</a>
+                            {% for categoria in categorias_nav %}
+                            <a class="dropdown-item" href="/articulos/categoria/{{categoria.id_categoria}}">
+                                {{ categoria.nombre }}
+                            </a>
+                            {% endfor %}
                         </div>
                     </li>
                     <li class="nav-item">
