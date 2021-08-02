@@ -8,7 +8,15 @@ cd wireperu
 python manage.py startapp tienda
 ```
 
-# Migrar modelos
+## Migrar modelos
 
+```
 python manage.py makemigrations
-ptyhon manage.py migrate
+python manage.py migrate
+```
+
+## Crear superusuario
+
+```
+python manage.py createsupeuser
+```
