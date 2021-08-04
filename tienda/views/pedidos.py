@@ -119,7 +119,7 @@ def realizar_pedido(request):
         serie_comprob = '#', # Boletas, # FA01 -> Facturas
         tipo_comprob = tipo_comprobante,
         fecha_pedido = datetime.datetime.now(),
-        fecha_entrega = datetime.datetime.now(),
+        fecha_entrega = datetime.datetime.now() + datetime.timedelta(days=10),
         id_cliente = Cliente.objects.get(id_cliente = request.session['cliente']['id_cliente'])
     )
     pedido.save()
