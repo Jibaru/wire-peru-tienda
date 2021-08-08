@@ -89,11 +89,14 @@ WSGI_APPLICATION = 'wireperu.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': str(BASE_DIR / 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'dcr2kj7sietk7m',
+        'HOST': 'ec2-44-194-112-166.compute-1.amazonaws.com',
+        'PORT': 5432,
+        'USER': 'nqktxlexxtnwcq',
+        'PASSWORD': '3abac101200d40f4e2be01dd259404b44e9af42b6df0145319e05a9f386a995e'
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
