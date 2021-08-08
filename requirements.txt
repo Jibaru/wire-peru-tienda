@@ -14,7 +14,6 @@ cycler==0.10.0
 dbus-python==1.2.16
 decorator==4.4.2
 distro==1.4.0
-distro-info===0.23ubuntu1
 dj-static==0.0.6
 Django==3.2.4
 duplicity==0.8.12.0
