@@ -30,3 +30,8 @@ El superusuario es:
 Usuario: admin
 Contraseña: 123456789
 ```
+
+## Prueba
+
+[Página Prueba](https://cryptic-beach-87901.herokuapp.com/)
+[Admin](https://cryptic-beach-87901.herokuapp.com/admin)
